@@ -1,0 +1,80 @@
+﻿
+CREATE TABLE [dbo].users
+(
+	[name] NVARCHAR(50) NOT NULL, 
+    [email] NVARCHAR(50) NOT NULL, 
+    [password] NVARCHAR(50) NULL, 
+    [cnic] NVARCHAR(50) NULL, 
+    [mobile] NVARCHAR(50) NULL, 
+    [address] NVARCHAR(MAX) NULL, 
+    [userType] NVARCHAR(50) NULL, 
+    [status] NVARCHAR(50) NULL, 
+    CONSTRAINT [PK_users] PRIMARY KEY ([email]) 
+)
+
+CREATE TABLE [dbo].[menus] (
+    [Id]                  INT           IDENTITY (1, 1) NOT NULL,
+    [title]               NVARCHAR (50) NULL,
+    [category]            NVARCHAR (50) NULL,
+    [unit]                NVARCHAR (50) NULL,
+    [price]               INT NULL,
+    [qty]                 NVARCHAR (50) NULL,
+    [photo]               NVARCHAR (50) NULL,
+    [description]         NVARCHAR (50) NULL,
+    [DateOfManufacturing] NVARCHAR (50) NULL,
+    [DateOfExpiry]        NVARCHAR (50) NULL,
+    [status]              NVARCHAR (50) NULL,
+    [MarkedBy]            NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+CREATE TABLE [dbo].Customer_Shoppings
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [customerId] NVARCHAR(50) NULL, 
+    [meal] NVARCHAR(50) NULL, 
+    [qty] NVARCHAR(50) NULL, 
+    [unit] NVARCHAR(50) NULL, 
+    [price] NVARCHAR(50) NULL, 
+    [date] NVARCHAR(50) NULL, 
+    [status] NVARCHAR(50) NULL
+)
+
+CREATE TABLE [dbo].[Customer_Attendances] (
+    [Id]         INT           IDENTITY (1, 1) NOT NULL,
+    [customerid] NVARCHAR (50) NULL,
+    [date]       NVARCHAR (50) NULL,
+    [time]       NVARCHAR (50) NULL,
+    [present]    INT           NULL,
+    [month]      NVARCHAR(50)           NULL,
+    [status]     NVARCHAR (50) NULL,
+    [markedBy]   NVARCHAR (50) NULL,
+    [isMarked]   INT           NULL,
+    [absent] INT NULL, 
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+
+CREATE TABLE [dbo].payments
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [customerId] NVARCHAR(50) NULL, 
+    [amount] INT NULL, 
+    [PaymentType] NVARCHAR(50) NULL, 
+    [method] NVARCHAR(50) NULL, 
+    [DateOfSubmission] NVARCHAR(50) NULL, 
+    [status] NVARCHAR(50) NULL
+)
+
+
+CREATE TABLE [dbo].[feedbacks] (
+    [Id]         INT            IDENTITY (1, 1) NOT NULL,
+    [customerid] NVARCHAR (50)  NULL,
+    [message]    NVARCHAR (MAX) NULL,
+    [date]       NVARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
